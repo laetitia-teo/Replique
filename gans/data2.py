@@ -10,7 +10,7 @@ import tensorflow as tf
 
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
-filenames = glob(op.join('..', 'datasets', '128_part', '*.jpg'))
+filenames = glob(op.join('..', 'datasets', '128', '*.jpg'))
 
 image_count = len(filenames)
 
@@ -80,7 +80,7 @@ def load_image(filename):
     img_raw = tf.io.read_file(filename)
     return img_raw
 
-def create_tfrecords(directory, batch_size, write_dir='data128'):
+def create_tfrecords(directory, batch_size, write_dir):
     """
     Scans the data directory and creates a set of TFRecords files corresponding
     to the data. Each TFRecord file must contain less than 200MB worth of jpeg
